@@ -12,7 +12,7 @@ async function chooseVenue() {
 }
 
 const choiceClassName =
-  "flex h-full w-full flex-col items-start gap-2 rounded-xl border border-zinc-800 bg-zinc-950 px-6 py-7 text-left transition-colors hover:border-zinc-600 hover:bg-zinc-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-400";
+  "flex h-full w-full flex-col items-start gap-2 rounded-none border border-zinc-800 bg-zinc-950 px-6 py-7 text-left transition-colors hover:border-zinc-600 hover:bg-zinc-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-400";
 
 export default async function OnboardingPage() {
   const user = await ensureAppUser();
