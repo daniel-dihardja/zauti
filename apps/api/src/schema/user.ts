@@ -16,7 +16,6 @@ UserRef.implement({
           ? user.createdAt.toISOString()
           : String(user.createdAt),
     }),
-
   }),
 });
 
