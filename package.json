@@ -5,7 +5,11 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "check-types": "turbo run check-types",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "db:generate": "pnpm --filter @zauti/db generate",
+    "db:migrate": "pnpm --filter @zauti/db migrate",
+    "db:studio": "pnpm --filter @zauti/db studio"
   },
   "devDependencies": {
     "prettier": "^3.6.2",
@@ -14,5 +18,8 @@
   "packageManager": "pnpm@10.24.0",
   "engines": {
     "node": ">=18"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild"]
   }
 }
