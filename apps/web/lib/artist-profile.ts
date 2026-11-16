@@ -92,6 +92,7 @@ export async function updateArtistProfile(
     }
 
     revalidatePath("/profile");
+    revalidatePath("/artists");
     return { ok: true };
   } catch (error) {
     return {

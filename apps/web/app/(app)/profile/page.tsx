@@ -1,4 +1,5 @@
 import { Music2Icon } from "lucide-react";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import type { ArtistProfile } from "@zauti/db";
 import { Badge } from "@/components/ui/badge";
@@ -105,7 +106,7 @@ export default async function ProfilePage() {
     : null;
 
   return (
-    <div className="mx-auto flex w-full max-w-2xl flex-1 flex-col gap-8 px-6 py-8 sm:px-8 sm:py-10">
+    <div className="mx-auto flex w-full max-w-5xl flex-1 flex-col gap-8 px-6 py-8 sm:px-8 sm:py-10">
       {isArtist ? (
         <>
           <div className="flex flex-col gap-3">
@@ -152,8 +153,8 @@ export default async function ProfilePage() {
               {user.name}
             </h1>
             <p className="max-w-md text-base text-muted-foreground">
-              Artist discovery is on the way. Soon you&apos;ll browse live talent
-              and request dates from here.
+              Browse live talent by act type and city. Booking requests come
+              next.
             </p>
           </div>
 
@@ -164,15 +165,12 @@ export default async function ProfilePage() {
               </EmptyMedia>
               <EmptyTitle className="text-base">Browse artists</EmptyTitle>
               <EmptyDescription>
-                Discovery and booking tools for venues are coming next.
+                See who’s available to book for your venue or event.
               </EmptyDescription>
             </EmptyHeader>
             <EmptyContent>
-              <Button disabled size="lg">
-                Browse artists
-                <Badge variant="secondary" className="ml-1">
-                  Soon
-                </Badge>
+              <Button size="lg" asChild>
+                <Link href="/artists">Browse artists</Link>
               </Button>
             </EmptyContent>
           </Empty>

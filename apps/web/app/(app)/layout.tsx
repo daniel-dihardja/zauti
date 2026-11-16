@@ -10,11 +10,11 @@ export default async function AppLayout({ children }: { children: ReactNode }) {
     redirect("/sign-in");
   }
 
-  await ensureAppUser();
+  const user = await ensureAppUser();
 
   return (
     <div className="flex min-h-dvh flex-col bg-background text-foreground">
-      <AppHeader />
+      <AppHeader showArtistsNav={Boolean(user.accountType)} />
       <div className="flex flex-1 flex-col">{children}</div>
     </div>
   );
