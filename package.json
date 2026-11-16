@@ -11,8 +11,11 @@
     "check": "pnpm run check-types && pnpm run lint && pnpm run format:check",
     "db:generate": "pnpm --filter @zauti/db generate",
     "db:migrate": "pnpm --filter @zauti/db migrate",
-    "db:studio": "pnpm --filter @zauti/db studio"
+    "db:studio": "pnpm --filter @zauti/db studio",
+    "preview:web": "pnpm --filter @zauti/db build && pnpm --filter @zauti/web cf:preview",
+    "deploy:web": "pnpm --filter @zauti/db build && pnpm --filter @zauti/web cf:deploy"
   },
+
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "eslint": "^10.15.0",

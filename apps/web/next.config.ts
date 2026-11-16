@@ -1,8 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  cacheComponents: true,
-  partialPrefetching: true,
+  // Cache Components + Partial Prefetching currently hang on Cloudflare Workers
+  // (workerd): "Worker’s code had hung and would never generate a response".
+  // Re-enable when OpenNext's workerd scheduler fix is stable for Next 16.4.
   images: {
     remotePatterns: [
       {
@@ -22,3 +23,7 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
+
+import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
+
+initOpenNextCloudflareForDev();

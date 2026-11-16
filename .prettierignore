@@ -2,6 +2,8 @@ dist
 node_modules
 .turbo
 .next
+.open-next
+.wrangler
 coverage
 pnpm-lock.yaml
 packages/db/drizzle
