@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^7.10.0",
+    "@zauti/db": "workspace:*",
+    "drizzle-orm": "^0.44.7",
     "next": "16.4.6",
     "react": "19.3.0",
     "react-dom": "19.3.0"
