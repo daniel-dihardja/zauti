@@ -1,7 +1,30 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useEffect } from "react";
+import { toast } from "sonner";
 import type { ActType, ArtistProfile } from "@zauti/db";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  Field,
+  FieldGroup,
+  FieldLabel,
+} from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
+import {
+  NativeSelect,
+  NativeSelectOption,
+} from "@/components/ui/native-select";
+import { Spinner } from "@/components/ui/spinner";
+import { Textarea } from "@/components/ui/textarea";
 import { updateArtistProfile } from "../../../lib/artist-profile";
 
 const ACT_TYPE_OPTIONS: { value: ActType; label: string }[] = [
@@ -12,12 +35,6 @@ const ACT_TYPE_OPTIONS: { value: ActType; label: string }[] = [
 ];
 
 type FormState = { ok: true } | { ok: false; error: string } | null;
-
-const fieldClassName =
-  "mt-2 w-full border border-blush/15 bg-black px-4 py-3 text-base text-blush placeholder:text-muted/60 outline-none transition-colors focus:border-stage";
-
-const labelClassName =
-  "block text-xs font-medium tracking-wide text-muted uppercase";
 
 export function ArtistProfileForm({
   profile,
@@ -31,130 +48,112 @@ export function ArtistProfileForm({
     null
   );
 
+  useEffect(() => {
+    if (state?.ok) {
+      toast.success("Profile saved");
+    }
+  }, [state]);
+
   return (
-    <form
-      action={formAction}
-      className="mt-10 space-y-6 border-t border-blush/10 pt-8"
-    >
-      <div>
-        <h2 className="font-display text-xl font-semibold tracking-[-0.02em]">
-          Artist details
-        </h2>
-        <p className="mt-2 text-sm leading-relaxed text-muted">
+    <Card>
+      <CardHeader>
+        <CardTitle className="text-lg">Artist details</CardTitle>
+        <CardDescription>
           Add what you can now — you can fill in the rest anytime.
-        </p>
-      </div>
+        </CardDescription>
+      </CardHeader>
+      <form action={formAction}>
+        <CardContent className="flex flex-col gap-8">
+          <FieldGroup>
+            <h3 className="text-base font-medium text-foreground">Identity</h3>
+            <Field>
+              <FieldLabel htmlFor="stageName">Stage name</FieldLabel>
+              <Input
+                id="stageName"
+                name="stageName"
+                defaultValue={profile?.stageName ?? ""}
+                placeholder="How you appear on Zauti"
+              />
+            </Field>
+            <Field>
+              <FieldLabel htmlFor="actType">Act type</FieldLabel>
+              <NativeSelect
+                id="actType"
+                name="actType"
+                defaultValue={profile?.actType ?? ""}
+                className="w-full"
+              >
+                <NativeSelectOption value="">Select act type</NativeSelectOption>
+                {ACT_TYPE_OPTIONS.map((option) => (
+                  <NativeSelectOption key={option.value} value={option.value}>
+                    {option.label}
+                  </NativeSelectOption>
+                ))}
+              </NativeSelect>
+            </Field>
+            <Field>
+              <FieldLabel htmlFor="genres">Genres</FieldLabel>
+              <Input
+                id="genres"
+                name="genres"
+                defaultValue={profile?.genres ?? ""}
+                placeholder="e.g. House, Jazz, Indie rock"
+              />
+            </Field>
+          </FieldGroup>
 
-      <div>
-        <label htmlFor="stageName" className={labelClassName}>
-          Stage name
-        </label>
-        <input
-          id="stageName"
-          name="stageName"
-          type="text"
-          defaultValue={profile?.stageName ?? ""}
-          placeholder="How you appear on Zauti"
-          className={fieldClassName}
-        />
-      </div>
+          <FieldGroup>
+            <h3 className="text-base font-medium text-foreground">Story</h3>
+            <Field>
+              <FieldLabel htmlFor="bio">Bio</FieldLabel>
+              <Textarea
+                id="bio"
+                name="bio"
+                rows={5}
+                defaultValue={profile?.bio ?? ""}
+                placeholder="Tell venues about your sound, experience, and typical sets."
+              />
+            </Field>
+          </FieldGroup>
 
-      <div>
-        <label htmlFor="actType" className={labelClassName}>
-          Act type
-        </label>
-        <select
-          id="actType"
-          name="actType"
-          defaultValue={profile?.actType ?? ""}
-          className={fieldClassName}
-        >
-          <option value="">Select act type</option>
-          {ACT_TYPE_OPTIONS.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </select>
-      </div>
+          <FieldGroup className="pb-4">
+            <h3 className="text-base font-medium text-foreground">Location</h3>
+            <div className="grid gap-5 sm:grid-cols-2">
+              <Field>
+                <FieldLabel htmlFor="city">City</FieldLabel>
+                <Input
+                  id="city"
+                  name="city"
+                  defaultValue={profile?.city ?? ""}
+                  placeholder="Berlin"
+                />
+              </Field>
+              <Field>
+                <FieldLabel htmlFor="country">Country</FieldLabel>
+                <Input
+                  id="country"
+                  name="country"
+                  defaultValue={profile?.country ?? ""}
+                  placeholder="Germany"
+                />
+              </Field>
+            </div>
+          </FieldGroup>
 
-      <div>
-        <label htmlFor="genres" className={labelClassName}>
-          Genres
-        </label>
-        <input
-          id="genres"
-          name="genres"
-          type="text"
-          defaultValue={profile?.genres ?? ""}
-          placeholder="e.g. House, Jazz, Indie rock"
-          className={fieldClassName}
-        />
-      </div>
-
-      <div>
-        <label htmlFor="bio" className={labelClassName}>
-          Bio
-        </label>
-        <textarea
-          id="bio"
-          name="bio"
-          rows={5}
-          defaultValue={profile?.bio ?? ""}
-          placeholder="Tell venues about your sound, experience, and typical sets."
-          className={`${fieldClassName} resize-y`}
-        />
-      </div>
-
-      <div className="grid gap-6 sm:grid-cols-2">
-        <div>
-          <label htmlFor="city" className={labelClassName}>
-            City
-          </label>
-          <input
-            id="city"
-            name="city"
-            type="text"
-            defaultValue={profile?.city ?? ""}
-            placeholder="Berlin"
-            className={fieldClassName}
-          />
-        </div>
-        <div>
-          <label htmlFor="country" className={labelClassName}>
-            Country
-          </label>
-          <input
-            id="country"
-            name="country"
-            type="text"
-            defaultValue={profile?.country ?? ""}
-            placeholder="Germany"
-            className={fieldClassName}
-          />
-        </div>
-      </div>
-
-      {state && !state.ok ? (
-        <p className="text-sm text-stage" role="alert">
-          {state.error}
-        </p>
-      ) : null}
-      {state?.ok ? (
-        <p className="text-sm text-stage" role="status">
-          Profile saved.
-        </p>
-      ) : null}
-
-      <div className="flex justify-end">
-        <button
-          type="submit"
-          disabled={pending}
-          className="inline-flex h-12 items-center justify-center bg-stage px-7 text-sm font-semibold tracking-wide text-night transition-colors hover:bg-stage-deep hover:text-blush focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stage disabled:opacity-60"
-        >
-          {pending ? "Saving…" : profile ? "Save changes" : "Save profile"}
-        </button>
-      </div>
-    </form>
+          {state && !state.ok ? (
+            <Alert variant="destructive">
+              <AlertTitle>Couldn’t save</AlertTitle>
+              <AlertDescription>{state.error}</AlertDescription>
+            </Alert>
+          ) : null}
+        </CardContent>
+        <CardFooter className="justify-end">
+          <Button type="submit" size="lg" disabled={pending}>
+            {pending ? <Spinner data-icon="inline-start" /> : null}
+            {pending ? "Saving…" : profile ? "Save changes" : "Save profile"}
+          </Button>
+        </CardFooter>
+      </form>
+    </Card>
   );
 }

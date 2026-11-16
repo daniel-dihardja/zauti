@@ -1,16 +1,12 @@
 import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata, Viewport } from "next";
-import { Outfit, Syne } from "next/font/google";
+import { Geist } from "next/font/google";
+import { Toaster } from "@/components/ui/sonner";
+import { clerkAppearance } from "../lib/clerk-appearance";
 import "./globals.css";
 
-const display = Syne({
-  variable: "--font-syne",
-  subsets: ["latin"],
-  weight: ["600", "700", "800"],
-});
-
-const body = Outfit({
-  variable: "--font-outfit",
+const geistSans = Geist({
+  variable: "--font-geist-sans",
   subsets: ["latin"],
 });
 
@@ -21,7 +17,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#08070b",
+  themeColor: "#0a0a0a",
   width: "device-width",
   initialScale: 1,
 };
@@ -30,10 +26,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${display.variable} ${body.variable} h-full antialiased`}
+      className={`dark ${geistSans.variable} h-full antialiased`}
     >
       <body className="min-h-full font-sans">
-        <ClerkProvider>{children}</ClerkProvider>
+        <ClerkProvider appearance={clerkAppearance}>
+          {children}
+          <Toaster />
+        </ClerkProvider>
       </body>
     </html>
   );
