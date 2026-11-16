@@ -15,6 +15,20 @@
       "when": 1794841824950,
       "tag": "0001_same_jean_grey",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1794843028788,
+      "tag": "0002_nervous_titanium_man",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1794843218896,
+      "tag": "0003_aromatic_starhawk",
+      "breakpoints": true
     }
   ]
 }
