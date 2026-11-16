@@ -1,12 +1,7 @@
 "use server";
 
 import { auth, clerkClient, currentUser } from "@clerk/nextjs/server";
-import {
-  db,
-  users,
-  type AccountType,
-  type User,
-} from "@zauti/db";
+import { db, users, type AccountType, type User } from "@zauti/db";
 import { eq } from "drizzle-orm";
 import { redirect } from "next/navigation";
 

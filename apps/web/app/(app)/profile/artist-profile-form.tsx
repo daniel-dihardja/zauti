@@ -32,7 +32,10 @@ export function ArtistProfileForm({
   );
 
   return (
-    <form action={formAction} className="mt-10 space-y-6 border-t border-blush/10 pt-8">
+    <form
+      action={formAction}
+      className="mt-10 space-y-6 border-t border-blush/10 pt-8"
+    >
       <div>
         <h2 className="font-display text-xl font-semibold tracking-[-0.02em]">
           Artist details
