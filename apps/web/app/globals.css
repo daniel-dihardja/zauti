@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+:root {
+  --night: #08070b;
+  --stage: #f0c27a;
+  --stage-deep: #c9923f;
+  --blush: #f3e8d8;
+  --muted: #b9a999;
+  --background: var(--night);
+  --foreground: var(--blush);
+}
+
+@theme inline {
+  --color-night: var(--night);
+  --color-stage: var(--stage);
+  --color-stage-deep: var(--stage-deep);
+  --color-blush: var(--blush);
+  --color-muted: var(--muted);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-outfit);
+  --font-display: var(--font-syne);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-outfit), system-ui, sans-serif;
+}
+
+@keyframes brand-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes light-sweep {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: translate3d(-2%, 0, 0) scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: translate3d(3%, -1%, 0) scale(1.04);
+  }
+}
+
+@keyframes soft-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-brand-rise {
+  animation: brand-rise 0.95s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-copy-rise {
+  animation: brand-rise 0.95s cubic-bezier(0.22, 1, 0.36, 1) 0.18s both;
+}
+
+.animate-cta-rise {
+  animation: brand-rise 0.95s cubic-bezier(0.22, 1, 0.36, 1) 0.32s both;
+}
+
+.animate-light-sweep {
+  animation: light-sweep 14s ease-in-out infinite;
+}
+
+.animate-soft-fade {
+  animation: soft-fade 1.4s ease both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-brand-rise,
+  .animate-copy-rise,
+  .animate-cta-rise,
+  .animate-light-sweep,
+  .animate-soft-fade {
+    animation: none;
+  }
+}
