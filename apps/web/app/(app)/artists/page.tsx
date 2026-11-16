@@ -28,6 +28,7 @@ import {
   listDiscoverableArtists,
   parseArtistListFilters,
 } from "../../../lib/artists";
+import { DEFAULT_CITY } from "../../../lib/location";
 import { requireOnboardedUser } from "../../../lib/require-onboarded";
 
 const ACT_TYPE_OPTIONS = [
@@ -106,7 +107,7 @@ export default async function ArtistsPage({
                   id="city"
                   name="city"
                   defaultValue={filters.city ?? ""}
-                  placeholder="e.g. Berlin"
+                  placeholder={`e.g. ${DEFAULT_CITY}`}
                 />
               </Field>
               <Field>
@@ -175,7 +176,7 @@ export default async function ArtistsPage({
                       {genres ?? "No genres listed"}
                     </p>
                   </CardContent>
-                  <CardFooter>
+                  <CardFooter className="justify-end">
                     <Button variant="outline" size="sm" asChild>
                       <Link href={`/artists/${artist.id}`}>View profile</Link>
                     </Button>

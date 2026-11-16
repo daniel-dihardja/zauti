@@ -26,6 +26,7 @@ import {
 import { Spinner } from "@/components/ui/spinner";
 import { Textarea } from "@/components/ui/textarea";
 import { updateArtistProfile } from "../../../lib/artist-profile";
+import { DEFAULT_CITY, DEFAULT_COUNTRY } from "../../../lib/location";
 
 const ACT_TYPE_OPTIONS: { value: ActType; label: string }[] = [
   { value: "dj", label: "DJ" },
@@ -124,8 +125,8 @@ export function ArtistProfileForm({
                 <Input
                   id="city"
                   name="city"
-                  defaultValue={profile?.city ?? ""}
-                  placeholder="Berlin"
+                  defaultValue={profile?.city ?? DEFAULT_CITY}
+                  placeholder={DEFAULT_CITY}
                 />
               </Field>
               <Field>
@@ -133,8 +134,8 @@ export function ArtistProfileForm({
                 <Input
                   id="country"
                   name="country"
-                  defaultValue={profile?.country ?? ""}
-                  placeholder="Germany"
+                  defaultValue={profile?.country ?? DEFAULT_COUNTRY}
+                  placeholder={DEFAULT_COUNTRY}
                 />
               </Field>
             </div>
