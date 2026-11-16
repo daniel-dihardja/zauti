@@ -2,7 +2,6 @@ import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata, Viewport } from "next";
 import { Geist } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
-import { clerkAppearance } from "../lib/clerk-appearance";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -29,7 +28,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`dark ${geistSans.variable} h-full antialiased`}
     >
       <body className="min-h-full font-sans">
-        <ClerkProvider appearance={clerkAppearance}>
+        <ClerkProvider>
           {children}
           <Toaster />
         </ClerkProvider>
