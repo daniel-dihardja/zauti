@@ -58,7 +58,7 @@ export function ArtistProfileForm({
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="text-lg">Artist details</CardTitle>
+        <CardTitle>Artist details</CardTitle>
         <CardDescription>
           Add what you can now — you can fill in the rest anytime.
         </CardDescription>

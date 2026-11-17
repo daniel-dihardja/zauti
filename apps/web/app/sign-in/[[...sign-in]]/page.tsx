@@ -4,10 +4,10 @@ import { Suspense } from "react";
 
 export default function SignInPage() {
   return (
-    <main className="flex min-h-dvh flex-col items-center justify-center bg-zinc-950 px-6 text-zinc-50">
+    <main className="flex min-h-dvh flex-col items-center justify-center bg-background px-6 text-foreground">
       <Link
         href="/"
-        className="mb-8 text-2xl font-semibold tracking-tight text-zinc-50 hover:text-white"
+        className="mb-8 font-heading text-2xl tracking-tight text-ocean transition-colors hover:text-primary"
       >
         Zauti
       </Link>

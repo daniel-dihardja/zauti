@@ -72,7 +72,7 @@ function AccountCard({
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="text-lg">Account</CardTitle>
+        <CardTitle>Account</CardTitle>
         <CardDescription>Sign-in details for this Zauti account.</CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col gap-4">
@@ -106,14 +106,14 @@ export default async function ProfilePage() {
     : null;
 
   return (
-    <div className="mx-auto flex w-full max-w-5xl flex-1 flex-col gap-8 px-6 py-8 sm:px-8 sm:py-10">
+    <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-8 px-6 py-8 sm:px-8 sm:py-10">
       {isArtist ? (
         <>
           <div className="flex flex-col gap-3">
             <p className="text-sm font-medium text-muted-foreground">
               Artist profile
             </p>
-            <h1 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
+            <h1 className="font-heading text-3xl tracking-tight text-foreground sm:text-4xl">
               {displayName}
             </h1>
             <div className="flex flex-wrap items-center gap-2">
@@ -149,7 +149,7 @@ export default async function ProfilePage() {
             <p className="text-sm font-medium text-muted-foreground">
               Venue profile
             </p>
-            <h1 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
+            <h1 className="font-heading text-3xl tracking-tight text-foreground sm:text-4xl">
               {user.name}
             </h1>
             <p className="max-w-md text-base text-muted-foreground">
@@ -163,14 +163,14 @@ export default async function ProfilePage() {
               <EmptyMedia variant="icon">
                 <Music2Icon />
               </EmptyMedia>
-              <EmptyTitle className="text-base">Browse artists</EmptyTitle>
+              <EmptyTitle>Browse artists</EmptyTitle>
               <EmptyDescription>
                 See who’s available to book for your venue or event.
               </EmptyDescription>
             </EmptyHeader>
             <EmptyContent>
               <Button size="lg" asChild>
-                <Link href="/artists">Browse artists</Link>
+                <Link href="/artists">Find Artists</Link>
               </Button>
             </EmptyContent>
           </Empty>

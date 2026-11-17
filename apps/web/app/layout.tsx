@@ -1,22 +1,30 @@
 import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata, Viewport } from "next";
-import { Geist } from "next/font/google";
+import { DM_Serif_Display, Manrope } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const dmSerif = DM_Serif_Display({
+  variable: "--font-dm-serif",
+  weight: "400",
+  subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Zauti — Book live artists for your venue",
+  title: "Zauti — Book live artists in Zanzibar",
   description:
-    "Zauti helps hotels and event organizers book DJs, musicians, and artists.",
+    "Zauti helps hotels and event organizers in Zanzibar book DJs, musicians, and artists.",
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0a0a0a",
+  themeColor: "#f6f1e8",
   width: "device-width",
   initialScale: 1,
 };
@@ -25,7 +33,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`dark ${geistSans.variable} h-full antialiased`}
+      className={`${manrope.variable} ${dmSerif.variable} h-full antialiased`}
     >
       <body className="min-h-full font-sans">
         <ClerkProvider>

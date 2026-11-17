@@ -4,18 +4,20 @@ import {
   type ActType,
   type ArtistProfile,
 } from "@zauti/db";
-import { and, asc, eq, ilike, isNotNull, ne, sql, type SQL } from "drizzle-orm";
+import { and, asc, eq, ilike, isNotNull, ne, or, sql, type SQL } from "drizzle-orm";
 
 const ACT_TYPES: readonly ActType[] = ["dj", "band", "solo", "ensemble"];
 
 export type DiscoverableArtistListItem = Pick<
   ArtistProfile,
-  "id" | "stageName" | "actType" | "genres" | "city" | "country"
+  "id" | "stageName" | "actType" | "genres" | "city" | "country" | "bio"
 >;
 
 export type ListDiscoverableArtistsInput = {
   actType?: ActType | null;
   city?: string | null;
+  q?: string | null;
+  genre?: string | null;
   limit?: number;
   offset?: number;
 };
@@ -36,18 +38,24 @@ function parseActTypeFilter(value: string | null | undefined): ActType | null {
 export function parseArtistListFilters(searchParams: {
   actType?: string | string[];
   city?: string | string[];
-}): { actType: ActType | null; city: string | null } {
+  q?: string | string[];
+}): { actType: ActType | null; city: string | null; q: string | null } {
   const actTypeRaw = Array.isArray(searchParams.actType)
     ? searchParams.actType[0]
     : searchParams.actType;
   const cityRaw = Array.isArray(searchParams.city)
     ? searchParams.city[0]
     : searchParams.city;
+  const qRaw = Array.isArray(searchParams.q)
+    ? searchParams.q[0]
+    : searchParams.q;
   const city = cityRaw?.trim() || null;
+  const q = qRaw?.trim() || null;
 
   return {
     actType: parseActTypeFilter(actTypeRaw),
     city,
+    q,
   };
 }
 
@@ -67,6 +75,23 @@ export async function listDiscoverableArtists(
     conditions.push(ilike(artistProfiles.city, `%${city}%`));
   }
 
+  const q = input.q?.trim();
+  if (q) {
+    const pattern = `%${q}%`;
+    conditions.push(
+      or(
+        ilike(artistProfiles.stageName, pattern),
+        ilike(artistProfiles.genres, pattern),
+        ilike(artistProfiles.bio, pattern)
+      ) as SQL
+    );
+  }
+
+  const genre = input.genre?.trim();
+  if (genre) {
+    conditions.push(ilike(artistProfiles.genres, `%${genre}%`));
+  }
+
   return db
     .select({
       id: artistProfiles.id,
@@ -75,6 +100,7 @@ export async function listDiscoverableArtists(
       genres: artistProfiles.genres,
       city: artistProfiles.city,
       country: artistProfiles.country,
+      bio: artistProfiles.bio,
     })
     .from(artistProfiles)
     .where(and(...conditions))
