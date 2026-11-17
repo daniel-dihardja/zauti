@@ -1,5 +1,5 @@
 {
-  "name": "zauti",
+  "name": "zanzibar-app",
   "private": true,
   "scripts": {
     "build": "turbo run build",
@@ -9,11 +9,11 @@
     "format": "prettier --write \"**/*.{ts,tsx,md,json,mjs}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,md,json,mjs}\"",
     "check": "pnpm run check-types && pnpm run lint && pnpm run format:check",
-    "db:generate": "pnpm --filter @zauti/db generate",
-    "db:migrate": "pnpm --filter @zauti/db migrate",
-    "db:studio": "pnpm --filter @zauti/db studio",
-    "preview:web": "pnpm --filter @zauti/db build && pnpm --filter @zauti/web cf:preview",
-    "deploy:web": "pnpm --filter @zauti/db build && pnpm --filter @zauti/web cf:deploy"
+    "db:generate": "pnpm --filter @zanzibar-app/db generate",
+    "db:migrate": "pnpm --filter @zanzibar-app/db migrate",
+    "db:studio": "pnpm --filter @zanzibar-app/db studio",
+    "preview:web": "pnpm --filter @zanzibar-app/db build && pnpm --filter @zanzibar-app/web cf:preview",
+    "deploy:web": "pnpm --filter @zanzibar-app/db build && pnpm --filter @zanzibar-app/web cf:deploy"
   },
 
   "devDependencies": {

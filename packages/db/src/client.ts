@@ -24,7 +24,7 @@ export function getDb(): Database {
   return _db;
 }
 
-/** Lazy proxy so importing `@zauti/db` does not require DATABASE_URL until first use. */
+/** Lazy proxy so importing `@zanzibar-app/db` does not require DATABASE_URL until first use. */
 export const db = new Proxy({} as Database, {
   get(_target, prop, receiver) {
     return Reflect.get(getDb(), prop, receiver);

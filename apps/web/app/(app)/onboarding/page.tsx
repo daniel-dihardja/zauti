@@ -25,7 +25,7 @@ export default async function OnboardingPage() {
     <div className="mx-auto flex w-full max-w-5xl flex-1 flex-col justify-center px-6 py-12 sm:px-8">
       <p className="text-sm font-medium text-muted-foreground">Step 1 of 2</p>
       <h1 className="mt-3 font-heading text-3xl tracking-tight text-foreground sm:text-4xl">
-        How will you use Zauti?
+        How will you use Zanzibar App?
       </h1>
       <p className="mt-3 max-w-md text-base leading-relaxed text-muted-foreground sm:text-lg">
         Pick the account that fits you in Zanzibar. You can finish your profile

@@ -1,7 +1,7 @@
 import { Music2Icon } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import type { ArtistProfile } from "@zauti/db";
+import type { ArtistProfile } from "@zanzibar-app/db";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -73,7 +73,7 @@ function AccountCard({
     <Card>
       <CardHeader>
         <CardTitle>Account</CardTitle>
-        <CardDescription>Sign-in details for this Zauti account.</CardDescription>
+        <CardDescription>Sign-in details for this Zanzibar App account.</CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col gap-4">
         <div className="flex flex-col gap-1">

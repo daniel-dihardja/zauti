@@ -6,4 +6,4 @@ The living product spec (tokens, page rules, implementation gaps) lives in the w
 
 **[`apps/web/DESIGN.md`](../../../apps/web/DESIGN.md)**
 
-That file is the source of truth for Zauti engineering. Keep it in sync when the board changes.
+That file is the source of truth for Zanzibar App engineering. Keep it in sync when the board changes.

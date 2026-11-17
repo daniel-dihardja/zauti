@@ -5,7 +5,7 @@ import {
   db,
   type ActType,
   type ArtistProfile,
-} from "@zauti/db";
+} from "@zanzibar-app/db";
 import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { ensureAppUser } from "./users";

@@ -1,5 +1,5 @@
 {
-  "name": "@zauti/web",
+  "name": "@zanzibar-app/web",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -16,7 +16,7 @@
   "dependencies": {
     "@clerk/nextjs": "^7.10.0",
     "@opennextjs/cloudflare": "^1.20.17",
-    "@zauti/db": "workspace:*",
+    "@zanzibar-app/db": "workspace:*",
     "class-variance-authority": "^0.7.1",
     "cn": "^0.5.2",
     "drizzle-orm": "^0.44.7",

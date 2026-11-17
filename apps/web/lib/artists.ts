@@ -3,7 +3,7 @@ import {
   db,
   type ActType,
   type ArtistProfile,
-} from "@zauti/db";
+} from "@zanzibar-app/db";
 import { and, asc, eq, ilike, isNotNull, ne, or, sql, type SQL } from "drizzle-orm";
 
 const ACT_TYPES: readonly ActType[] = ["dj", "band", "solo", "ensemble"];

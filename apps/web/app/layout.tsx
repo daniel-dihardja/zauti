@@ -18,9 +18,9 @@ const dmSerif = DM_Serif_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Zauti — Book live artists in Zanzibar",
+  title: "Zanzibar App — Book live artists in Zanzibar",
   description:
-    "Zauti helps hotels and event organizers in Zanzibar book DJs, musicians, and artists.",
+    "Zanzibar App helps hotels and event organizers in Zanzibar book DJs, musicians, and artists.",
 };
 
 export const viewport: Viewport = {

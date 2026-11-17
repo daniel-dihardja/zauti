@@ -2,7 +2,7 @@
 
 import { useActionState, useEffect } from "react";
 import { toast } from "sonner";
-import type { ActType, ArtistProfile } from "@zauti/db";
+import type { ActType, ArtistProfile } from "@zanzibar-app/db";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import {
@@ -73,7 +73,7 @@ export function ArtistProfileForm({
                 id="stageName"
                 name="stageName"
                 defaultValue={profile?.stageName ?? ""}
-                placeholder="How you appear on Zauti"
+                placeholder="How you appear on Zanzibar App"
               />
             </Field>
             <Field>

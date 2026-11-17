@@ -35,7 +35,7 @@ importers:
       '@opennextjs/cloudflare':
         specifier: ^1.20.17
         version: 1.20.17(next@16.4.6(@babel/core@7.29.13)(@types/node@22.20.5)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(wrangler@4.163.0(@types/node@22.20.5))
-      '@zauti/db':
+      '@zanzibar-app/db':
         specifier: workspace:*
         version: link:../../packages/db
       class-variance-authority:

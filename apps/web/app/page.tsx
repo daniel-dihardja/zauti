@@ -19,10 +19,10 @@ import {
   NativeSelect,
   NativeSelectOption,
 } from "@/components/ui/native-select";
+import { BrandLogo } from "./components/brand-logo";
 import { DEFAULT_CITY } from "../lib/location";
 
-const HERO_IMAGE =
-  "https://images.unsplash.com/photo-1470225620780-dba8ba60b75b?auto=format&fit=crop&w=2400&q=80";
+const HERO_IMAGE = "/hero.jpg";
 
 const CATEGORIES = [
   {
@@ -75,12 +75,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-t from-ocean/85 via-ocean/40 to-ocean/25" />
 
         <header className="relative z-10 mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-6 py-5 sm:px-8">
-          <Link
-            href="/"
-            className="font-heading text-2xl tracking-tight text-white"
-          >
-            Zauti
-          </Link>
+          <BrandLogo tone="light" />
           <nav className="hidden items-center gap-6 text-sm text-white/90 lg:flex">
             <Link href="/artists" className="transition-colors hover:text-white">
               Find Artists

@@ -1,5 +1,5 @@
 ---
-name: Zauti
+name: Zanzibar App
 board_name: Zanzibar Live Talent Marketplace
 source: packages/docs/design/Zanzibar Live Talent Marketplace UI.png
 default_mode: light
@@ -11,9 +11,9 @@ radius:
   cards: ~1rem–1.25rem
 ---
 
-# Zauti design specification
+# Zanzibar App design specification
 
-Canonical visual system for Zauti, transcribed from the **Zanzibar Live Talent Marketplace** UI board. Product brand in app remains **Zauti**; board title is the marketplace concept name.
+Canonical visual system for Zanzibar App, transcribed from the **Zanzibar Live Talent Marketplace** UI board. Product brand in app remains **Zanzibar App**; board title is the marketplace concept name.
 
 ## Brand & mood
 
@@ -131,7 +131,7 @@ Not fully drawn on the board; inherit Warm Ivory canvas, Deep Ocean wordmark, Co
 | Board element | Status |
 |---------------|--------|
 | Palette + fonts + pills | Live tokens: ivory/coral/ocean/sand + DM Serif / Manrope |
-| Landing hero, search, trust, categories | Implemented (Zauti naming) |
+| Landing hero, search, trust, categories | Implemented (Zanzibar App naming) |
 | Find Artists sidebar + grid | Implemented (category, genre, location; date/sort UI placeholders) |
 | Verified, favorites, ratings, price | UI placeholders until schema exists |
 | View Profile & Book | Card CTA live; booking request deferred on detail |
